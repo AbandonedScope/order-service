@@ -65,10 +65,16 @@ management:
   endpoints:
     web:
       exposure:
-        include: health, refresh
+        include: health, refresh, prometheus, flyway
   endpoint:
     health:
       show-details: always
       show-components: always
       probes:
         enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+logging:
+  pattern:
+    level: "%5d [${spring.application.name},%X{trace_id},%X{span_id}]"

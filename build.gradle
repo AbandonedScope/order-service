@@ -16,6 +16,7 @@ ext {
 	set('springCloudVersion', "2021.0.3")
 	set('testcontainersVersion', "1.17.3")
 	set('testKeycloakVersion', "2.1.2")
+	set('otelVersion', "1.12.1")
 }
 
 dependencies {
@@ -27,6 +28,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.cloud:spring-cloud-stream-binder-rabbit'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+	runtimeOnly 'org.postgresql:r2dbc-postgresql'
+	runtimeOnly 'org.flywaydb:flyway-core'
+	runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'org.springframework:spring-jdbc'
+	runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+	runtimeOnly "io.opentelemetry.javaagent:opentelemetry-javaagent:${otelVersion}"
 	testImplementation("org.springframework.cloud:spring-cloud-stream") {
 		artifact {
 			name = "spring-cloud-stream"
@@ -35,10 +42,6 @@ dependencies {
 			classifier = "test-binder"
 		}
 	}
-	runtimeOnly 'org.postgresql:r2dbc-postgresql'
-	runtimeOnly 'org.flywaydb:flyway-core'
-	runtimeOnly 'org.postgresql:postgresql'
-	runtimeOnly 'org.springframework:spring-jdbc'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
 	testImplementation 'org.testcontainers:junit-jupiter'
