@@ -22,7 +22,8 @@ spring:
     password: ${spring.r2dbc.password}
     url: jdbc:postgresql://localhost:5432/polardb_order
   config:
-    import: "optional:configserver:"
+    import: ""
+  #"optional:configserver:"
   cloud:
     config:
       uri: http://localhost:8888
