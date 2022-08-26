@@ -23,9 +23,10 @@ spring:
     url: jdbc:postgresql://localhost:5432/polardb_order
   config:
     import: ""
-  #"optional:configserver:"
+#"optional:configserver:"
   cloud:
     config:
+      enabled: false
       uri: http://localhost:8888
       request-read-timeout: 5000
       request-connect-timeout: 5000
